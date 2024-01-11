@@ -11,9 +11,9 @@ socket.on('private-message', function(data) {
 
 function addMessage(e) {
     var message = {
-        autor: document.getElementById("username").value,
-        texto: document.getElementById("texto").value,
-        destinatario: document.getElementById("destinatario").value
+        autor: $("#username").val(),
+        texto: $("#texto").val(),
+        destinatario: $("#destinatario").val()
     };
     socket.emit("new-message", message);
     return false;
@@ -21,25 +21,15 @@ function addMessage(e) {
 
 function render(data) {
     var html = data.map(function(elem) {
-        if (elem.esPrivado) {
-            return(`<div style="color: red;">
-                        <strong>MENSAJE PRIVADO DE ${elem.autor}</strong>:
-                        <em>${elem.texto}</em>
-                    </div>`);
-        } else {
-            return(`<div>
-                        <strong>${elem.autor}</strong>:
-                        <em>${elem.texto}</em>
-                    </div>`);
-        }
+        return elem.esPrivado ?
+            `<div style="color: red;"><strong>MENSAJE PRIVADO DE ${elem.autor}</strong>:<em>${elem.texto}</em></div>` :
+            `<div><strong>${elem.autor}</strong>:<em>${elem.texto}</em></div>`;
     }).join(" ");
-    var chat = document.getElementById('chat');
-    chat.innerHTML += html;
-    chat.scrollTop = chat.scrollHeight;
+    $('#chat').append(html).scrollTop($('#chat')[0].scrollHeight);
 }
 
 function registerUser() {
-    var usuario = document.getElementById("username").value;
+    var usuario = $("#username").val();
     if (usuario.trim() === '') {
         alert('Por favor, ingresa un nombre de usuario.');
         return;
@@ -47,6 +37,6 @@ function registerUser() {
 
     socket.emit("new-user", usuario);
 
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('chat-container').style.display = 'block';
+    $('#login').hide();
+    $('#chat-container').show();
 }
