@@ -47,20 +47,22 @@
             display: flex;
             width: 80%;
             max-width: 600px;
+            flex-wrap: wrap;
+            /* Permite que los elementos del formulario se ajusten en pantallas pequeñas */
         }
 
-        form input[type=text] {
-            flex: 1;
+        form input[type=text],
+        form input[type=submit] {
+            flex: 1 0 180px;
+            /* Flexibilidad y base width para responsividad */
             padding: 10px;
-            margin-right: 5px;
+            margin: 5px;
+            /* Asegura margen en todos los lados */
             border-radius: 3px;
             border: 1px solid #ddd;
         }
 
         form input[type=submit] {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
             background-color: #007bff;
             color: white;
             cursor: pointer;
@@ -68,6 +70,23 @@
 
         form input[type=submit]:hover {
             background-color: #0056b3;
+        }
+
+        /* Media Queries para dispositivos más pequeños */
+        @media (max-width: 600px) {
+
+            #chat,
+            form {
+                width: 100%;
+                /* Ocupa toda la anchura en dispositivos pequeños */
+                max-width: none;
+            }
+
+            body,
+            #chat {
+                padding: 10px;
+                /* Añade un poco de padding en dispositivos pequeños */
+            }
         }
     </style>
 </head>
