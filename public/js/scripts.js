@@ -1,4 +1,5 @@
-var socket = io();
+var socket = io('http://localhost:8080');
+
 
 socket.on('messages', function(data) {
     render(data);
