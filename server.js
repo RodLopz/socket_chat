@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -151,7 +151,7 @@ io.on('connection', function(socket) {
         }
     });
 });
-=======
+
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -304,4 +304,3 @@ io.on('connection', function(socket) {
         }
     });
 });
->>>>>>> b8978ab54435019af1ef62d5c6ee959bdffa2204
