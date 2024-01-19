@@ -11,13 +11,13 @@ const usuarioSchema  = new mongoose.Schema({
 const usuario= mongoose.model('usuario', usuarioSchema);
 
 //conexion a bd 
-const conexionBD = async ()=> {
+const conexionBD = async () => {
   try {
-    await mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(mongoDBURL);
     console.log('Conectado a MongoDB!');
   } catch (err) {
     console.error('Error conectando a MongoDB:', err);
-    process.exit(1); // Exit the process with an error code (1)
+    process.exit(1); // Salir del proceso con un código de error (1)
   }
 };
 

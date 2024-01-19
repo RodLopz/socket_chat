@@ -17,6 +17,8 @@ function addMessage(e) {
         destinatario: $("#destinatario").val()
     };
     socket.emit("new-message", message);
+      // Limpiar el campo de texto después de enviar el mensaje
+      $("#texto").val('');
     return false;
 }
 
