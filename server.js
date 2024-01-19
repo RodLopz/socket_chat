@@ -136,7 +136,7 @@ io.on('connection', function(socket) {
         userSockets[usuario] = socket;
         
         // Crear y enviar un mensaje de bienvenida personalizado
-        let welcomeMessage = { id: Date.now(), texto: `Bienvenido ${usuario}, comeinza a chatear para todos o elige un usuario conectado para enviarle un mensaje privado`, autor: "Cristiano" };
+        let welcomeMessage = { id: Date.now(), texto: `Bienvenido ${usuario}, comienza a chatear para todos o elige un usuario conectado para enviarle un mensaje privado`, autor: "Cristiano" };
         socket.emit('messages', [welcomeMessage]);
     });
 
